@@ -54,17 +54,27 @@ function markPresent() {
 }
 
 // ---------- RENDER EVERYTHING ----------
+function safeRenderList(listId, items) {
+  let list = document.getElementById(listId);
+  list.innerHTML = "";
+  items.forEach(item => {
+    let li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+}
+
 function render() {
-  // Players
+  // Players + dropdown
   let playerList = document.getElementById("playerList");
   let select = document.getElementById("attendanceSelect");
 
   playerList.innerHTML = "";
   select.innerHTML = "";
 
-  players.forEach((p, i) => {
+  players.forEach(p => {
     let li = document.createElement("li");
-    li.textContent = p;
+    li.textContent = "👤 " + p;
     playerList.appendChild(li);
 
     let option = document.createElement("option");
@@ -72,33 +82,9 @@ function render() {
     select.appendChild(option);
   });
 
-  // Schedule
-  let scheduleList = document.getElementById("scheduleList");
-  scheduleList.innerHTML = "";
-  schedule.forEach(s => {
-    let li = document.createElement("li");
-    li.textContent = s;
-    scheduleList.appendChild(li);
-  });
-
-  // Announcements
-  let announcementList = document.getElementById("announcementList");
-  announcementList.innerHTML = "";
-  announcements.forEach(a => {
-    let li = document.createElement("li");
-    li.textContent = a;
-    announcementList.appendChild(li);
-  });
-
-  // Attendance
-  let attendanceList = document.getElementById("attendanceList");
-  attendanceList.innerHTML = "";
-  attendance.forEach(a => {
-    let li = document.createElement("li");
-    li.textContent = a;
-    attendanceList.appendChild(li);
-  });
+  safeRenderList("scheduleList", schedule.map(s => "📅 " + s));
+  safeRenderList("announcementList", announcements.map(a => "📢 " + a));
+  safeRenderList("attendanceList", attendance.map(a => "✅ " + a));
 }
 
-// RUN ON START
 render();
