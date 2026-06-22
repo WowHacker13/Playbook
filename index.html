@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rugby Team Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🏉 Rugby Team Hub</h1>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>Players</h2>
+      <ul id="playerList"></ul>
+      <input id="playerInput" placeholder="Add player">
+      <button onclick="addPlayer()">Add</button>
+    </div>
+
+    <div class="card">
+      <h2>Schedule</h2>
+      <ul id="scheduleList"></ul>
+      <input id="scheduleInput" placeholder="Practice or game">
+      <button onclick="addSchedule()">Add</button>
+    </div>
+
+    <div class="card">
+      <h2>Attendance</h2>
+      <select id="attendanceSelect"></select>
+      <button onclick="markPresent()">Mark Present</button>
+      <ul id="attendanceList"></ul>
+    </div>
+
+    <div class="card">
+      <h2>Announcements</h2>
+      <ul id="announcementList"></ul>
+      <input id="announcementInput" placeholder="Announcement">
+      <button onclick="addAnnouncement()">Post</button>
+    </div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+  </html>
